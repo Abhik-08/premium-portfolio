@@ -1,0 +1,320 @@
+/* Stylesheet for Education Timeline and Stats - Optimized Performance Theme */
+
+/* Premium dark background with white grid pattern for the section */
+.education-section {
+  background-color: #0b0d19; /* Slightly lighter, rich space-slate background */
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 42, 42, 0.04), transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(255, 42, 42, 0.03), transparent 50%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Timeline Layout */
+.education-timeline {
+  position: relative;
+  max-width: 62rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 0;
+}
+
+/* Static vertical track line */
+.timeline-track-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 42, 42, 0.15), rgba(255, 255, 255, 0.05));
+  pointer-events: none;
+  z-index: 5;
+}
+
+@media (min-width: 1024px) {
+  .timeline-track-line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Row wrapper for layout sync */
+.education-timeline-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .education-timeline-row {
+    flex-direction: row;
+    margin-bottom: 6rem;
+  }
+}
+
+/* Glow timeline dot when card is hovered */
+.education-timeline-row:has(.education-card-wrapper:hover) .timeline-dot-outer-premium {
+  border-color: #ff2a2a;
+  box-shadow: 0 0 15px rgba(255, 42, 42, 0.7);
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.education-timeline-row:has(.education-card-wrapper:hover) .timeline-dot-inner-premium {
+  background-color: #ff2a2a;
+  box-shadow: 0 0 10px #ff2a2a;
+}
+
+/* Card Wrapper - 2D only */
+.education-card-wrapper {
+  will-change: transform, opacity;
+  display: flex;
+}
+
+.education-card-inner {
+  position: relative;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  min-height: 220px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+              background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 10;
+}
+
+.education-card-inner:hover {
+  border-color: rgba(255, 42, 42, 0.4);
+  background-color: rgba(255, 255, 255, 0.04);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 42, 42, 0.15);
+}
+
+/* Internal glass layer - slightly lighter and warmer glass effect with reduced blur */
+.glass-card-content {
+  background: rgba(14, 16, 29, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 23px;
+  padding: 2rem;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stat counter card hover glows */
+.stat-counter-card {
+  background-color: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.stat-counter-card:hover {
+  border-color: rgba(255, 42, 42, 0.3);
+  background-color: rgba(255, 255, 255, 0.04);
+  transform: translateY(-4px);
+}
+
+/* Timeline marker dots - static, small and clean */
+.timeline-dot-outer-premium {
+  position: absolute;
+  left: 20px;
+  top: 3.5rem;
+  transform: translate(-50%, -50%);
+  width: 1.9rem;
+  height: 1.9rem;
+  background-color: #0b0d19;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 1024px) {
+  .timeline-dot-outer-premium {
+    left: 50%;
+    top: 50%;
+  }
+}
+
+.timeline-dot-inner-premium {
+  width: 0.65rem;
+  height: 0.65rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Active timeline dot styling (static slight glow, no animation keyframes) */
+.timeline-dot-outer-premium.active {
+  border-color: rgba(255, 42, 42, 0.6) !important;
+  box-shadow: 0 0 15px rgba(255, 42, 42, 0.5) !important;
+  transform: translate(-50%, -50%) scale(1.15) !important;
+}
+
+.timeline-dot-outer-premium.active .timeline-dot-inner-premium {
+  background-color: #ff2a2a !important;
+  box-shadow: 0 0 8px #ff2a2a !important;
+}
+
+/* Ambient Blobs in background */
+.education-bg-blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.08;
+  background: radial-gradient(circle, rgba(255, 42, 42, 0.5) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Giant Year Watermark */
+.year-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22rem;
+  font-weight: 950;
+  color: #ff2a2a;
+  opacity: 0.02;
+  filter: blur(1px);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+@media (max-width: 1024px) {
+  .year-watermark {
+    font-size: 15rem;
+    top: 40%;
+  }
+}
+
+/* Storyline Labels */
+.timeline-story-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 4rem 0;
+  z-index: 15;
+  position: relative;
+}
+
+.timeline-story-label-inner {
+  background: rgba(11, 13, 25, 0.95);
+  border: 1px solid rgba(255, 42, 42, 0.18);
+  color: #ff2a2a;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.4rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 15px rgba(255, 42, 42, 0.08);
+  opacity: 0.3;
+  transition: opacity 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+}
+
+.timeline-story-label:hover .timeline-story-label-inner {
+  opacity: 0.75;
+  border-color: rgba(255, 42, 42, 0.5);
+  transform: scale(1.03);
+}
+
+/* Card Ambient back-glow */
+.card-ambient-glow {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle, rgba(255, 42, 42, 0.16) 0%, transparent 70%);
+  z-index: 1;
+  opacity: 0;
+  filter: blur(35px);
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: scale(0.85);
+}
+
+.education-card-wrapper:hover .card-ambient-glow {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* Pulsing styling for dot */
+.timeline-dot-premium-pulse {
+  animation: dotPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0px rgba(255, 42, 42, 0);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 12px rgba(255, 42, 42, 0.3);
+  }
+}
+
+/* B.Tech card special scale */
+.btech-card-special {
+  border: 1px solid rgba(255, 42, 42, 0.25) !important;
+  background: rgba(255, 42, 42, 0.03) !important;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(255, 42, 42, 0.1) !important;
+}
+
+.btech-card-special:hover {
+  border-color: rgba(255, 42, 42, 0.55) !important;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.55),
+    0 0 35px rgba(255, 42, 42, 0.25) !important;
+}
+
+.btech-card-special .glass-card-content {
+  background: rgba(14, 11, 22, 0.94) !important;
+  border-color: rgba(255, 42, 42, 0.12) !important;
+}
+
+/* Custom shimmer effect on card borders */
+@keyframes borderShimmer {
+  0% { border-color: rgba(255, 42, 42, 0.25); }
+  50% { border-color: rgba(255, 42, 42, 0.45); }
+  100% { border-color: rgba(255, 42, 42, 0.25); }
+}
+
+.btech-card-special .education-card-inner {
+  animation: borderShimmer 4s infinite ease-in-out;
+}
+

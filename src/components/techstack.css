@@ -1,0 +1,164 @@
+/* CSS for Premium Double Tech Stack Marquee (Opposing Directions) */
+
+.tech-stack-container {
+  width: 100%;
+  position: relative;
+  overflow: visible;
+}
+
+/* Horizontal marquee container with gradient fade masks on left and right edges */
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 0.75rem 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+/* Left-scrolling track */
+.marquee-track-left {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: marqueeScrollLeft 55s linear infinite;
+  will-change: transform;
+}
+
+/* Right-scrolling track */
+.marquee-track-right {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: marqueeScrollRight 55s linear infinite;
+  will-change: transform;
+}
+
+/* Pause scroll animation on hover to allow inspection */
+.marquee-container:hover .marquee-track-left,
+.marquee-container:hover .marquee-track-right {
+  animation-play-state: paused;
+}
+
+/* Infinite marquee translate keyframes */
+@keyframes marqueeScrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeScrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Light Glassmorphic Rectangular Card (Frosted Glass Effect on Red Background) */
+.tech-card-rect {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  width: 290px;
+  height: 84px;
+  padding: 0 1.25rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.tech-card-rect:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.15),
+    0 0 25px rgba(255, 255, 255, 0.45);
+  transform: scale(1.06) translateY(-4px);
+  z-index: 100;
+}
+
+/* Icon Box inside card */
+.tech-icon-box {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.tech-card-rect:hover .tech-icon-box {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+/* Logo image styling */
+.tech-logo-img-rect {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  opacity: 0.95;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+}
+
+.tech-card-rect:hover .tech-logo-img-rect {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Text info inside card */
+.tech-info-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.tech-title-rect {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease;
+}
+
+.tech-card-rect:hover .tech-title-rect {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.tech-subtitle-rect {
+  color: #ffe2e2; /* Soft pink-white text for readability and high contrast on red background */
+  font-family: monospace;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

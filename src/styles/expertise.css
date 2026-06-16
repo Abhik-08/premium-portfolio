@@ -1,0 +1,141 @@
+/* Stylesheet for Premium Expertise Showcase Section - Light Theme */
+
+/* White Background Grid Pattern */
+.expertise-section {
+  background-color: #ffffff; /* Clean white background */
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px;
+}
+
+/* Mouse spotlight container with very subtle red glow on light theme */
+.spotlight-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 500px at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 42, 42, 0.025), transparent 85%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Metallic silver rivet pin at top of each card */
+.card-rivet {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 40%, #94a3b8 70%, #475569 100%);
+  box-shadow: 
+    inset -1px -1px 2px rgba(0,0,0,0.2),
+    inset 1px 1px 2px rgba(255,255,255,0.9),
+    0 2px 4px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+/* Red bg rivet dot vs White bg rivet dot */
+.glass-card-red .card-rivet::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff2a2a; /* Red background rivet dot */
+  box-shadow: inset 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+.glass-card-white .card-rivet::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff; /* White background rivet dot */
+  box-shadow: inset 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+/* Staggered Grid layout column offsets */
+@media (min-width: 768px) {
+  .stagger-col-2 {
+    transform: translateY(60px);
+  }
+}
+
+/* Card 01 & 03: Solid Red Card style */
+.glass-card-red {
+  background-color: #ff2a2a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 15px 35px rgba(255, 42, 42, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.glass-card-red:hover {
+  box-shadow: 
+    0 30px 60px rgba(255, 42, 42, 0.45),
+    0 0 30px rgba(255, 42, 42, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Card 02 & 04: Solid White Card style */
+.glass-card-white {
+  background-color: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 
+    0 15px 35px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.glass-card-white:hover {
+  border-color: rgba(255, 42, 42, 0.35);
+  box-shadow: 
+    0 30px 60px rgba(255, 42, 42, 0.18),
+    0 0 30px rgba(255, 42, 42, 0.08);
+}
+
+/* Card Number Georgia style */
+.card-number {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+/* Responsive snap slider for mobile viewports */
+.mobile-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem 2.5rem 1.5rem;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  scrollbar-width: none; /* Firefox */
+}
+
+.mobile-slider::-webkit-scrollbar {
+  display: none; /* Safari / Chrome */
+}
+
+.mobile-slider-item {
+  flex: 0 0 85%;
+  max-width: 320px;
+  scroll-snap-align: center;
+}
