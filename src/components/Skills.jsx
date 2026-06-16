@@ -30,13 +30,12 @@ const itemVariants = {
 };
 
 const SkillCard = ({ title, skills, description, icon }) => {
+  const hoverAnimation = globalThis.window !== undefined && globalThis.window.innerWidth >= 1024 ? { y: -6, scale: 1.02 } : {};
+
   return (
     <motion.div
       variants={itemVariants}
-      whileHover={{
-        y: -6,
-        scale: 1.02
-      }}
+      whileHover={hoverAnimation}
       transition={{
         duration: 0.25
       }}
@@ -94,7 +93,6 @@ SkillCard.propTypes = {
   skills: PropTypes.arrayOf(PropTypes.string).isRequired,
   description: PropTypes.string.isRequired,
   icon: PropTypes.element.isRequired,
-  index: PropTypes.number.isRequired,
 };
 
 const Skills = () => {
@@ -177,16 +175,16 @@ const Skills = () => {
         </motion.div>
 
         {/* Categories Grid */}
-        <motion.div variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {skillCategories.map((category, catIdx) => (
-            <SkillCard
-              key={category.title}
-              title={category.title}
-              skills={category.skills}
-              description={category.description}
-              icon={category.icon}
-              index={catIdx}
-            />
+            <div key={category.title} className={catIdx === 2 ? 'md:col-span-2 lg:col-span-1' : ''}>
+              <SkillCard
+                title={category.title}
+                skills={category.skills}
+                description={category.description}
+                icon={category.icon}
+              />
+            </div>
           ))}
         </motion.div>
 

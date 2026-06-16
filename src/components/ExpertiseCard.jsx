@@ -29,7 +29,7 @@ const ExpertiseCard = ({
         isRedBg 
           ? 'glass-card-red text-white' 
           : 'glass-card-white text-slate-800'
-      } relative p-8 rounded-[2.2rem] flex flex-col justify-between w-full h-[360px] cursor-pointer select-none group`}
+      } relative p-8 rounded-[2.2rem] flex flex-col justify-between w-full min-h-[320px] h-full cursor-pointer select-none group`}
     >
       {/* Silver rivet pin at top center */}
       <div className="card-rivet" />
@@ -83,7 +83,7 @@ const ExpertiseCard = ({
   // Return mobile cards without complex float & parallax wrappers to ensure swipe performance
   if (isMobile) {
     return (
-      <div className="mobile-slider-item">
+      <div className="w-full">
         {CardContent}
       </div>
     );

@@ -33,16 +33,16 @@ const itemVariants = {
 
 const ExpertiseSection = () => {
   const sectionRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   // Resize listener to toggle responsive layouts
   useEffect(() => {
     const checkViewport = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsDesktop(globalThis.window.innerWidth >= 1024);
     };
     checkViewport();
-    window.addEventListener('resize', checkViewport);
-    return () => window.removeEventListener('resize', checkViewport);
+    globalThis.window.addEventListener('resize', checkViewport);
+    return () => globalThis.window.removeEventListener('resize', checkViewport);
   }, []);
 
   // Mouse move spotlight position handler via DOM listener to avoid JSX accessibility warnings
@@ -243,27 +243,7 @@ const ExpertiseSection = () => {
         {/* Right Side: Arena of diagonal floating cards / Mobile slider */}
         <div className="lg:col-span-7 w-full flex justify-center relative">
           
-          {isMobile ? (
-            /* Snap scroll slider view on mobile devices */
-            <div className="mobile-slider">
-              {cardsData.map((card) => (
-                <ExpertiseCard
-                  key={card.number}
-                  number={card.number}
-                  title={card.title}
-                  description={card.description}
-                  icon={card.icon}
-                  rotation={card.rotation}
-                  floatDuration={card.floatDuration}
-                  parallaxY={null}
-                  isMobile={true}
-                  initial={card.initial}
-                  animate={card.animate}
-                  delay={card.delay}
-                />
-              ))}
-            </div>
-          ) : (
+          {isDesktop ? (
             /* Non-overlapping Staggered Grid view on desktop */
             <div className="relative w-full max-w-[800px]">
               
@@ -329,6 +309,26 @@ const ExpertiseSection = () => {
                 </div>
               </div>
 
+            </div>
+          ) : (
+            /* Fully responsive stacked grid for mobile and tablet */
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-[700px] px-2">
+              {cardsData.map((card) => (
+                <ExpertiseCard
+                  key={card.number}
+                  number={card.number}
+                  title={card.title}
+                  description={card.description}
+                  icon={card.icon}
+                  rotation={0}
+                  floatDuration={card.floatDuration}
+                  parallaxY={null}
+                  isMobile={true}
+                  initial={card.initial}
+                  animate={card.animate}
+                  delay={card.delay}
+                />
+              ))}
             </div>
           )}
         </div>

@@ -41,13 +41,12 @@ const itemVariants = {
 };
 
 const CertificationCard = ({ title, provider, description, url, icon, image }) => {
+  const hoverAnimation = globalThis.window !== undefined && globalThis.window.innerWidth >= 1024 ? { y: -6, scale: 1.02 } : {};
+
   return (
     <motion.article
       variants={itemVariants}
-      whileHover={{
-        y: -6,
-        scale: 1.02
-      }}
+      whileHover={hoverAnimation}
       transition={{
         duration: 0.25
       }}
