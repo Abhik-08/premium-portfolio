@@ -29,16 +29,15 @@ const itemVariants = {
 };
 
 const ProjectCard = ({ title, subtitle, techStack, points, icon, githubUrl, liveUrl }) => {
+  const hoverAnimation = globalThis.window !== undefined && globalThis.window.innerWidth >= 1024 ? { y: -6, scale: 1.02 } : {};
+
   return (
     <motion.article
-      whileHover={{
-        y: -6,
-        scale: 1.02
-      }}
+      whileHover={hoverAnimation}
       transition={{
         duration: 0.25
       }}
-      className="group relative flex flex-col justify-between rounded-[2.5rem] bg-white/[0.13] hover:bg-white/[0.18] backdrop-blur-2xl border border-white/30 hover:border-white/50 shadow-[0_15px_35px_rgba(0,0,0,0.18)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.32)] transition-all duration-500 p-10 h-full z-10 w-full"
+      className="group relative flex flex-col justify-between rounded-[2rem] md:rounded-[2.5rem] bg-white/[0.13] hover:bg-white/[0.18] backdrop-blur-2xl border border-white/30 hover:border-white/50 shadow-[0_15px_35px_rgba(0,0,0,0.18)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.32)] transition-all duration-500 p-5 md:p-10 h-full z-10 w-full"
       aria-label={`Project: ${title}`}
     >
       {/* Decorative top glass gradient line */}
@@ -46,28 +45,28 @@ const ProjectCard = ({ title, subtitle, techStack, points, icon, githubUrl, live
 
       {/* Card Header */}
       <div>
-        <div className="flex justify-between items-start mb-6">
+        <div className="flex justify-between items-start mb-4 md:mb-6">
           {/* Icon Wrapper */}
-          <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/25 flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#ff2a2a] transition-all duration-500 shadow-sm group-hover:shadow-[0_10px_20px_rgba(255,255,255,0.25)]">
+          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 border border-white/25 flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#ff2a2a] transition-all duration-500 shadow-sm group-hover:shadow-[0_10px_20px_rgba(255,255,255,0.25)]">
             {icon}
           </div>
           {/* Top category/subtitle */}
-          <span className="text-xs font-bold tracking-[0.25em] text-white/85 uppercase font-mono group-hover:text-white transition-colors duration-300">
+          <span className="text-[10px] md:text-xs font-bold tracking-[0.15em] md:tracking-[0.25em] text-white/85 uppercase font-mono group-hover:text-white transition-colors duration-300">
             {subtitle}
           </span>
         </div>
 
         {/* Title */}
-        <h3 className="text-3xl font-black text-white tracking-tight mb-5 leading-tight">
+        <h3 className="text-xl md:text-3xl font-black text-white tracking-tight mb-3 md:mb-5 leading-tight">
           {title}
         </h3>
 
         {/* Tech Stack Pills */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
           {techStack.map((tech) => (
             <span
               key={tech}
-              className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-white/10 text-white border border-white/15 group-hover:border-transparent group-hover:bg-white group-hover:text-[#ff2a2a] transition-all duration-500"
+              className="text-[10px] md:text-xs font-bold px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-full bg-white/10 text-white border border-white/15 group-hover:border-transparent group-hover:bg-white group-hover:text-[#ff2a2a] transition-all duration-500"
             >
               {tech}
             </span>
@@ -75,7 +74,7 @@ const ProjectCard = ({ title, subtitle, techStack, points, icon, githubUrl, live
         </div>
 
         {/* Bullet Points List */}
-        <ul className="space-y-4">
+        <ul className="space-y-3 md:space-y-4">
           {points.map((point) => (
             <li key={point} className="flex items-start gap-3.5">
               {/* Custom Red Arrow/Checkmark SVG */}
@@ -84,7 +83,7 @@ const ProjectCard = ({ title, subtitle, techStack, points, icon, githubUrl, live
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </span>
-              <p className="text-[15px] font-semibold leading-relaxed text-white/85 group-hover:text-white transition-colors duration-500">
+              <p className="text-[13px] md:text-[15px] font-semibold leading-relaxed text-white/85 group-hover:text-white transition-colors duration-500">
                 {point}
               </p>
             </li>
@@ -93,7 +92,7 @@ const ProjectCard = ({ title, subtitle, techStack, points, icon, githubUrl, live
       </div>
 
       {/* Card Footer Actions */}
-      <div className="mt-8 pt-6 border-t border-white/15 flex items-center justify-between gap-4">
+      <div className="mt-5 pt-4 md:mt-8 md:pt-6 border-t border-white/15 flex items-center justify-between gap-3 md:gap-4">
         {/* Source Code Ghost Button */}
         <a
           href={githubUrl}
@@ -267,7 +266,7 @@ const Services = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.02 }}
         className="max-w-7xl mx-auto relative z-10"
       >
         
@@ -294,7 +293,7 @@ const Services = () => {
             <motion.div
               key={project.title}
               variants={itemVariants}
-              className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-[440px] flex flex-col items-stretch"
+              className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-full md:max-w-[440px] flex flex-col items-stretch"
             >
               <ProjectCard
                 title={project.title}

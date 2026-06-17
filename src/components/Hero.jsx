@@ -101,7 +101,7 @@ const Hero = () => {
           {/* Role Indicator */}
           <motion.h2
             variants={itemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.65)] opacity-70 mb-5 whitespace-nowrap"
+            className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.65)] opacity-70 mb-5"
           >
             Java Full Stack Developer
           </motion.h2>

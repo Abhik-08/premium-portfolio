@@ -150,7 +150,7 @@ const Skills = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.02 }}
         className="max-w-7xl mx-auto relative z-10"
       >
         

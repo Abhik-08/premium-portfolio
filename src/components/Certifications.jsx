@@ -50,7 +50,7 @@ const CertificationCard = ({ title, provider, description, url, icon, image }) =
       transition={{
         duration: 0.25
       }}
-      className="group relative flex flex-col justify-between rounded-[2.5rem] bg-gradient-to-b from-white to-red-500/[0.01] hover:to-red-500/[0.05] border border-[#ff2a2a]/10 hover:border-[#ff2a2a]/40 shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_25px_50px_rgba(255,42,42,0.12)] transition-all duration-500 p-8 h-full z-10 w-full overflow-hidden"
+      className="group relative flex flex-col justify-between rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-b from-white to-red-500/[0.01] hover:to-red-500/[0.05] border border-[#ff2a2a]/10 hover:border-[#ff2a2a]/40 shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_25px_50px_rgba(255,42,42,0.12)] transition-all duration-500 p-5 md:p-8 h-full z-10 w-full overflow-hidden"
       aria-label={`Certification: ${title}`}
     >
       {/* Thicker red laser accent line at top */}
@@ -61,9 +61,9 @@ const CertificationCard = ({ title, provider, description, url, icon, image }) =
 
       {/* Card Content */}
       <div>
-        <div className="flex justify-between items-start mb-6">
+        <div className="flex justify-between items-start mb-4 md:mb-6">
           {/* Icon Wrapper */}
-          <div className="w-14 h-14 rounded-2xl bg-zinc-50 border border-zinc-200/70 flex items-center justify-center text-slate-700 group-hover:bg-[#ff2a2a] group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm">
+          <div className="w-11 h-11 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-zinc-50 border border-zinc-200/70 flex items-center justify-center text-slate-700 group-hover:bg-[#ff2a2a] group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm">
             {icon}
           </div>
           {/* Platform/Provider */}
@@ -74,7 +74,7 @@ const CertificationCard = ({ title, provider, description, url, icon, image }) =
 
         {/* Certificate Preview Image */}
         {image && (
-          <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-slate-150 shadow-inner group-hover:border-[#ff2a2a]/20 transition-all duration-500">
+          <div className="w-full aspect-[16/10] rounded-xl md:rounded-2xl overflow-hidden mb-4 md:mb-6 border border-slate-150 shadow-inner group-hover:border-[#ff2a2a]/20 transition-all duration-500">
             <img
               src={image}
               alt={`Certificate for ${title}`}
@@ -84,18 +84,18 @@ const CertificationCard = ({ title, provider, description, url, icon, image }) =
         )}
 
         {/* Title */}
-        <h3 className="text-xl font-bold text-slate-800 tracking-tight mb-4 group-hover:text-[#ff2a2a] transition-colors duration-300">
+        <h3 className="text-base md:text-xl font-bold text-slate-800 tracking-tight mb-2 md:mb-4 group-hover:text-[#ff2a2a] transition-colors duration-300">
           {title}
         </h3>
 
         {/* Description */}
-        <p className="text-sm font-medium leading-relaxed text-slate-500 group-hover:text-slate-650 transition-colors duration-500">
+        <p className="text-xs md:text-sm font-medium leading-relaxed text-slate-500 group-hover:text-slate-650 transition-colors duration-500">
           {description}
         </p>
       </div>
 
       {/* Verify Link - Premium outline pill button */}
-      <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-start">
+      <div className="mt-5 pt-4 md:mt-8 md:pt-6 border-t border-slate-100 flex items-center justify-start">
         <a
           href={url}
           target="_blank"
@@ -250,7 +250,7 @@ const Certifications = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.02 }}
         className="max-w-7xl mx-auto relative z-10"
       >
         
@@ -263,7 +263,7 @@ const Certifications = () => {
             <span className="w-1.5 h-1.5 rounded-full bg-[#ff2a2a] animate-pulse" />
             <span>Credentials &amp; Courses</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-[1.15] mb-6 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-[1.15] mb-4 md:mb-6 tracking-tight">
             Verified Skills &amp; Certifications
           </h2>
           <p className="text-slate-500 text-base md:text-lg font-medium leading-relaxed">
@@ -274,7 +274,7 @@ const Certifications = () => {
         {/* Responsive Grid Layout */}
         <motion.div 
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full items-stretch"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 w-full items-stretch"
         >
           {certs.map((cert) => (
             <CertificationCard
